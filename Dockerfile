@@ -14,7 +14,7 @@ WORKDIR /tmp
    linux/arm64) \
      echo "arm64" && export TRIPLET="aarch64-linux-gnu";; \
    esac && \
-   BITCOIN_URL="https://bitcoincore.org/bin/bitcoin-core-${BITCOIN_VERSION}/bitcoin-${BITCOIN_VERSION}-${TRIPLET}.tar.gz" && \
+   BITCOIN_URL="https://github.com/benthecarman/bitcoin/releases/download/custom-signet-blocktime/bitcoin-d8434da3c14e-${TRIPLET}.tar.gz" && \
    BITCOIN_FILE="bitcoin-${BITCOIN_VERSION}-${TRIPLET}.tar.gz" && \
    wget -qO "${BITCOIN_FILE}" "${BITCOIN_URL}" && \
    mkdir -p bin && \
@@ -30,6 +30,7 @@ ENV BITCOIN_DIR /root/.bitcoin
 
 ENV NBITS=${NBITS}
 ENV SIGNETCHALLENGE=${SIGNETCHALLENGE}
+ENV SIGNETBLOCKTIME=${SIGNETBLOCKTIME}
 ENV PRIVKEY=${PRIVKEY}
 
 ENV RPCUSER=${RPCUSER:-"bitcoin"}
