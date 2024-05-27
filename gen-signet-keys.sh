@@ -42,7 +42,7 @@ if [[ "$MINERENABLED" == "1" && ("$SIGNETCHALLENGE" == "" || "$PRIVKEY" == "") ]
     PUBKEY=$($BITCOINCLI getaddressinfo $ADDR | jq .pubkey | tr -d '""')
     #don't need regtest anymore
     $BITCOINCLI stop
-    SIGNETCHALLENGE=$(echo '5121'$PUBKEY'51ae')
+    SIGNETCHALLENGE=$(echo '6a4c09011e000000000000004c255121'$PUBKEY'51ae')
 
     #cleanup
     rm -rf $DATADIR
