@@ -15,5 +15,5 @@ while true; do
         fi
     fi
     echo "Mine To:" $ADDR
-    miner --cli="bitcoin-cli" generate --grind-cmd="bitcoin-util grind" --target-spacing=30 --address=$ADDR --nbits=$NBITS --set-block-time=$(date +%s)
+    miner --cli="bitcoin-cli" generate --grind-cmd="bitcoin-util grind" --target-spacing=10 --address=$ADDR --nbits=$NBITS --set-block-time=$(date +%s)
 done
