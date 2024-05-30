@@ -38,6 +38,7 @@ zmqpubhashblock=$ZMQPUBHASHBLOCK
 rpcbind=$RPCBIND
 rpcallowip=$RPCALLOWIP
 whitelist=$WHITELIST
+signetblocktime=$SIGNETBLOCKTIME
 fallbackfee=0.0002"
 
 if [[ "$ADDNODE" != "" ]]; then
