@@ -119,23 +119,35 @@ To make the most out of the Bitcoin Signet Docker image, here are some essential
    ```bash
    docker exec -it bitcoin-signet-instance /bin/bash
    ```
+   
+8. **View sync logs of a container**:
+   
+   ```bash
+   docker exec -it bitcoin-signet-instance bash
+   cd /root/.bitcoin/signet
+   tail debug.log -f
+   ``` 
+   If most of your logs are composed of `UpdateTip: new best=...` messages, it means that your node is syncing with the network.
+   
+   If after a while you see `Saw new header hash=...` logs, it means that your node is fully synced!
 
-8. **Pull the latest version of the image**:
-
+9. **Pull the latest version of the image**:
+    
    ```bash
    docker pull bitcoin-signet
    ```
 
-9. **Remove an image**:
+10. **Remove an image**:
 
-   ```bash
-   docker rmi bitcoin-signet
-   ```
+     ```bash
+     docker rmi bitcoin-signet
+     ```
 
-10. **View all Docker images**:
-    ```bash
-    docker images
-    ```
+11. **View all Docker images**:
+
+     ```bash
+     docker images
+     ```
 
 Remember to replace `bitcoin-signet-instance` with the name of your container if you've named it differently.
 
