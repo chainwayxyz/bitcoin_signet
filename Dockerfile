@@ -1,6 +1,6 @@
-FROM debian:buster-slim as builder
+FROM debian:bullseye-slim as builder
 
-ARG BITCOIN_VERSION=${BITCOIN_VERSION:-"d8434da3c14e"}
+ARG BITCOIN_VERSION=${BITCOIN_VERSION:-"92d5ac3864f6"}
 
 ARG TARGETPLATFORM  
 
@@ -14,14 +14,14 @@ WORKDIR /tmp
    linux/arm64) \
      echo "arm64" && export TRIPLET="aarch64-linux-gnu";; \
    esac && \
-   BITCOIN_URL="https://github.com/benthecarman/bitcoin/releases/download/custom-signet-blocktime/bitcoin-${BITCOIN_VERSION}-${TRIPLET}.tar.gz" && \
+   BITCOIN_URL="https://github.com/chainwayxyz/bitcoin/releases/download/v28.9-ten-secs-signet/bitcoin-${BITCOIN_VERSION}-${TRIPLET}.tar.gz" && \
    echo "Downloading ${BITCOIN_URL}" && \
    BITCOIN_FILE="bitcoin-${BITCOIN_VERSION}-${TRIPLET}.tar.gz" && \
    wget -qO "${BITCOIN_FILE}" "${BITCOIN_URL}" && \
    mkdir -p bin && \
    tar -xzvf "${BITCOIN_FILE}" -C /tmp/bin --strip-components=2 "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-cli" "bitcoin-${BITCOIN_VERSION}/bin/bitcoind" "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-wallet" "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-util" 
      
-FROM debian:buster-slim as custom-signet-bitcoin
+FROM debian:bullseye-slim as custom-signet-bitcoin
 
 LABEL org.opencontainers.image.authors="NBD"
 LABEL org.opencontainers.image.licenses=MIT
